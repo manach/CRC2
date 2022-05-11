@@ -1,8 +1,9 @@
 name: CRC2_daily_setup
-on: 
-  schedule:
+on: workflow_dispatch 
+
+  #  schedule:
     # Runs setup at 8 AM eastern (13:00 GMT) every weekday
-    - cron: '00, 13, *, *, 1-5'
+    # - cron: '00, 13, *, *, 1-5'
 jobs:
   daily_setup:
     runs-on: ubuntu-latest
