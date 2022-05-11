@@ -37,9 +37,9 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan Destroy
-        id: plan_destroy
-        run: terraform plan -destroy -no-color -detailed-exitcode
+#      - name: Terraform Plan Destroy
+#       id: plan_destroy
+#       run: terraform plan -destroy -no-color -detailed-exitcode
           
       - name: Terraform Destroy
         id: destroy
