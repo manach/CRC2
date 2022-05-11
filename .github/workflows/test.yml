@@ -1,4 +1,4 @@
-name: CRC2_daily_setup
+name: test
 on: workflow_dispatch 
 
   #  schedule:
