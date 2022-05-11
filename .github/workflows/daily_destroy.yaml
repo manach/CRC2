@@ -5,7 +5,7 @@ on: workflow_dispatch
     # Runs setup at 8 AM eastern (13:00 GMT) every weekday
     # - cron: '00, 13, *, *, 1-5'
 jobs:
-  daily_setup:
+  daily_destroy:
     runs-on: ubuntu-latest
     
     # Set working directory and shell
