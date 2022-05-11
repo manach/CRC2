@@ -15,8 +15,6 @@ jobs:
         shell: bash
         working-directory: terraform  
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
       - name: Test echo
         run: echo "$test_var"    
       - name: Test if    
