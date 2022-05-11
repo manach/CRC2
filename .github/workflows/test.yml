@@ -7,7 +7,8 @@ on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+    env: 
+    test_var: 42 
     # Set working directory and shell
     defaults:  
       run:
@@ -16,10 +17,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Set and test vars
-        env: 
-          test_var: 42
+      - name: Test echo
         run: echo "$test_var"    
-        if: ${{ env.test_var == 43 }}
+      - name: Test if    
+        if: ${{ env.test_var == 42 }}
         run: echo "success"
 
