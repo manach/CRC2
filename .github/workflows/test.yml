@@ -1,0 +1,24 @@
+name: CRC2_daily_setup
+on: workflow_dispatch 
+
+  #  schedule:
+    # Runs setup at 8 AM eastern (13:00 GMT) every weekday
+    # - cron: '00, 13, *, *, 1-5'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    # Set working directory and shell
+    defaults:  
+      run:
+        shell: bash
+        working-directory: terraform  
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set vars
+        run: TESTVAR=42
+      - name: Test vars
+        if: ${{ TESTVAR }} == 42
+        run: echo "success"
+
