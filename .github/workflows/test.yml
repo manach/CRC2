@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env: 
-    test_var: 42 
+      test_var: 42 
     # Set working directory and shell
     defaults:  
       run:
