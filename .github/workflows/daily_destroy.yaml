@@ -1,4 +1,4 @@
-name: CRC2_daily_setup
+name: CRC2_daily_destroy
 on: workflow_dispatch 
 
   #  schedule:
