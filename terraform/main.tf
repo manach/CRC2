@@ -1,3 +1,13 @@
+terraform {
+  cloud {
+    organization = "ccsdev"
+
+    workspaces {
+      name = "CRC2"
+    }
+  }
+}
+
 provider "aws" {
     region = "us-east-1" 
 }

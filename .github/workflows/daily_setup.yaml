@@ -1,0 +1,52 @@
+name: CRC2_daily_setup
+on: 
+  schedule:
+    # Runs setup at 8 AM eastern (13:00 GMT) every weekday
+    - cron: '00, 13, *, *, 1-5'
+jobs:
+  daily_setup:
+    runs-on: ubuntu-latest
+    
+    # Set working directory and shell
+    defaults:  
+      run:
+        shell: bash
+        working-directory: terraform  
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with: 
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan 
+        id: plan
+        run: terraform plan -no-color -detailed-exitcode
+          
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply  
+
+      - name: Alert if Error
+        id: alert_if_error 
+        if: ${{ failure() }}  
+        run: curl https://events.pagerduty.com/integration/e7fceb8afa2c410cd0c72070ef101e1d/enqueue
+
+  
