@@ -13,7 +13,6 @@ jobs:
     defaults:  
       run:
         shell: bash
-        working-directory: terraform  
     steps:
       - name: Test echo
         run: echo "$test_var"    
