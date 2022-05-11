@@ -48,16 +48,18 @@ jobs:
         id: apply
         run: terraform apply -auto-approve 
       
-      - name: Testing Logs
-        id: log_exitcodes
-        run: |
-          echo ${{ steps.plan.outputs.exitcode }} 
-          echo ${{ steps.apply.outputs.exitcode }}  
+      - name: Testing Logs (plan)
+        id: log_plancode
+        run: echo ${{ steps.plan.outputs.exitcode }} 
+        
+      - name: Testing Logs (apply)  
+        id: log_applycode
+        run: echo ${{ steps.apply.outputs.exitcode }}  
 
 
       - name: Alert if Error
         id: alert_if_error 
         if: ${{ steps.plan.outputs.exitcode }} == 1 || ${{ steps.apply.outputs.exitcode }} == 1 
-        run: curl https://events.pagerduty.com/integration/e7fceb8afa2c410cd0c72070ef101e1d/enqueue
+          run: curl https://events.pagerduty.com/integration/e7fceb8afa2c410cd0c72070ef101e1d/enqueue
 
   
