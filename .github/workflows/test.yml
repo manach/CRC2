@@ -17,6 +17,6 @@ jobs:
       - name: Test echo
         run: echo "$test_var"    
       - name: Test if    
-        if: ${{ env.test_var == 42 }}
+        if: ${{ env.test_var == 43 }}
         run: echo "success"
 
