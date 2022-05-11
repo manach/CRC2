@@ -17,8 +17,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Set vars
-        run: |
-          TESTVAR=42
+        env: 
+          TESTVAR: 42
       - name: Test vars
         if: ${{ TESTVAR }} == 42
         run: echo "success"
