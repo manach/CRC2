@@ -19,6 +19,7 @@ jobs:
       - name: Set and test vars
         env: 
           test_var: 42
-        if: ${ env.test_var == 43 }}
+        run: echo "$test_var"    
+        if: ${{ env.test_var == 43 }}
         run: echo "success"
 
