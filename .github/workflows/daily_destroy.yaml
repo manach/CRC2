@@ -45,11 +45,13 @@ jobs:
         id: destroy
         run: terraform destroy -auto-approve
 
-      - name: Testing Logs
-        id: log_exitcodes
-        run: |
-          echo ${{ steps.plan.outputs.exitcode }} 
-          echo ${{ steps.apply.outputs.exitcode }}  
+      - name: Testing Logs plan
+        id: log_plancode
+        run: echo ${{ steps.plan.outputs.exitcode }}
+
+      - name: Testing Logs apply
+        id: log_applycode
+        run: echo ${{ steps.apply.outputs.exitcode }}  
 
 
       - name: Alert if Error
