@@ -47,6 +47,13 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve 
+      
+      - name: Testing Logs
+        id: log_exitcodes
+        run: |
+          echo ${{ steps.plan.outputs.exitcode }} 
+          echo ${{ steps.apply.outputs.exitcode }}  
+
 
       - name: Alert if Error
         id: alert_if_error 
