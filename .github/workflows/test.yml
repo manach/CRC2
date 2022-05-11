@@ -16,10 +16,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Set vars
+      - name: Set and test vars
         env: 
           TESTVAR: 42
-      - name: Test vars
-        if: ${{ TESTVAR }} == 42
+        if: ${{ TESTVAR }} == 43
         run: echo "success"
 
