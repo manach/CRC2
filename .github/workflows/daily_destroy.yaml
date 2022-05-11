@@ -37,13 +37,13 @@ jobs:
         id: validate
         run: terraform validate -no-color
 
-      - name: Terraform Plan 
-        id: plan
-        run: terraform plan -no-color -detailed-exitcode
+      - name: Terraform Plan Destroy
+        id: plan_destroy
+        run: terraform plan -destroy -no-color -detailed-exitcode
           
       - name: Terraform Destroy
         id: destroy
-        run: terraform destroy
+        run: terraform destroy -auto-approve
 
       - name: Alert if Error
         id: alert_if_error 
