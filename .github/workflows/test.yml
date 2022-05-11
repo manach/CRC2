@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set and test vars
         env: 
-          TESTVAR: 42
-        if: TESTVAR == 43
+          test_var: 42
+        if: test_var == 43
         run: echo "success"
 
