@@ -1,9 +1,8 @@
 name: CRC2_daily_destroy
-on: workflow_dispatch 
-
-  #  schedule:
-    # Runs setup at 8 AM eastern (13:00 GMT) every weekday
-    # - cron: '00, 13, *, *, 1-5'
+on:
+  schedule:
+    # Runs destroy at 5:15 PM Pacific (01:15 AM UTC) every T-Sa
+    - cron: '15, 01, *, *, 2-6 '
 jobs:
   daily_destroy:
     runs-on: ubuntu-latest
