@@ -2,7 +2,7 @@ name: CRC2_daily_setup
 on:
   schedule:
     # Runs setup at 7:45 AM eastern (12:45 UTC) every weekday
-    - cron: '45, 12, *, *, 1-5'
+    - cron: '45 12 * * 1-5'
 jobs:
   daily_setup:
     runs-on: ubuntu-latest
