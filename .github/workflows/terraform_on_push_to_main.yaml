@@ -3,7 +3,7 @@ on: push
 
 jobs:
   terraform_job:
-    runs_on: ubuntu-latest  
+    runs-on: ubuntu-latest  
     defaults: 
       run:
         shell: bash
