@@ -40,10 +40,6 @@ jobs:
         id: destroy
         run: terraform destroy -auto-approve
 
-      - name: Testing Logs Destroy
-        id: log_destroycode
-        run: echo ${{ steps.destroy.outputs.exitcode }}  
-
       - name: Alert if Error
         id: alert_if_error 
         if: ${{ steps.destroy.outputs.exitcode != 0 }} 

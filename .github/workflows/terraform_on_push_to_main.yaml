@@ -1,17 +1,13 @@
-name: CRC2_daily_setup
-on:
-  schedule:
-    # Runs setup at 7:45 AM eastern (12:45 UTC) every weekday
-    - cron: '45 12 * * 1-5'
+name: terraform_on_push_to_main
+on: push
+
 jobs:
-  daily_setup:
-    runs-on: ubuntu-latest
-    
-    # Set working directory and shell
-    defaults:  
+  terraform_job:
+    runs_on: ubuntu-latest  
+    defaults: 
       run:
         shell: bash
-        working-directory: terraform  
+        working-directory: terraform
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -56,4 +52,4 @@ jobs:
         id: apply_alert
         if: steps.apply.outputs.exitcode != 0 
         run: curl https://events.pagerduty.com/integration/e7fceb8afa2c410cd0c72070ef101e1d/enqueue
-
+    
